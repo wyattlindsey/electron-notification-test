@@ -3,6 +3,12 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
+    useEffect(() => {
+        setTimeout(() => {
+            const notification = new Notification("Hello World!");
+        }, 1000);
+    }, []);
+
     return (
         <div className="App">
             <header className="App-header">
