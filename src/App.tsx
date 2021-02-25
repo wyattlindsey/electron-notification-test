@@ -5,20 +5,20 @@ import "./App.css";
 function App() {
     const counter = useRef(1);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const notification = new Notification(`Hello World! ${counter.current}`);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         const notification = new Notification(`Hello World! ${counter.current}`);
 
-            setTimeout(() => {
-                counter.current++;
-                notification.close();
-            }, 2000);
-        }, 3000);
+    //         setTimeout(() => {
+    //             counter.current++;
+    //             notification.close();
+    //         }, 2000);
+    //     }, 3000);
 
-        return () => {
-            clearInterval(interval);
-        };
-    }, []);
+    //     return () => {
+    //         clearInterval(interval);
+    //     };
+    // }, []);
 
     return (
         <div className="App">
