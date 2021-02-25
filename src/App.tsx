@@ -1,12 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
+    const counter = useRef(1);
+
     useEffect(() => {
-        setTimeout(() => {
-            const notification = new Notification("Hello World!");
-        }, 1000);
+        const interval = setInterval(() => {
+            const notification = new Notification(`Hello World! ${counter.current}`);
+
+            setTimeout(() => {
+                counter.current++;
+                notification.close();
+            }, 2000);
+        }, 3000);
+
+        return () => {
+            clearInterval(interval);
+        };
     }, []);
 
     return (
