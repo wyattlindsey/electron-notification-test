@@ -1,4 +1,5 @@
 import { app, BrowserWindow, Notification } from "electron";
+// import * as notifier from "node-notifier";
 import * as path from "path";
 import * as isDev from "electron-is-dev";
 import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer";
@@ -44,17 +45,21 @@ function createWindow() {
 }
 
 app.on("ready", () => {
+    app.setAppUserModelId(process.execPath)
+
     createWindow();
-    const notification = new Notification({
-        title: "Basic Notification",
-        body: "Notification from the Main process",
-    });
+
     setInterval(() => {
+        const notification  = new Notification({
+            title: "Hello World",
+            body: "This is a notification..."
+        })
         notification.show();
+
         setTimeout(() => {
             notification.close();
         }, 2000);
-    }, 3000);
+    }, 4000)
 });
 
 app.on("window-all-closed", () => {
